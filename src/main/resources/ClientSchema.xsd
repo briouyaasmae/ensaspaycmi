@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            targetNamespace="http//www.form.com/org/Client"
+             xmlns:tns="http//www.form.com/org/Client">
+     <xs:element name="addClientRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="client" type="tns:Client"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addClientResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getClientRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="phone" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getClientResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="client" type="tns:Client"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+       <xs:element name="checkSoldeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="phone" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="checkSoldeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="solde" type="xs:double"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+       <xs:element name="payFactureRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="montant" type="xs:double"/>
+                <xs:element name="phone" type="xs:string"/>
+                <xs:element name="phone2" type="xs:string"/>
+                
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="payFactureResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="Client">
+        <xs:sequence>
+            <xs:element name="identifiant" type="xs:string"/>
+            <xs:element name="nom" type="xs:string"/>
+            <xs:element name="prenom" type="xs:string"/>
+            <xs:element name="phone" type="xs:string"/>
+            <xs:element name="solde" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="message" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    
+    
+    
+    
+ </xs:schema>
