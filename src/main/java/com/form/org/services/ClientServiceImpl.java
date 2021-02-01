@@ -29,7 +29,11 @@ public class ClientServiceImpl implements IClientService {
 	@Override
 	public Client getClientByPhone(String phone) {
 		Client client1=repository.findByPhone(phone).get(0);
-		return client1;
+		if(client1 !=null) {
+		  return client1;
+		}
+		else
+		  return null;
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package com.form.org.endpoints;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -21,6 +22,7 @@ import http.www_form_com.org.client.PayFactureRequest;
 import http.www_form_com.org.client.PayFactureResponse;
 import http.www_form_com.org.client.ServiceStatus;
 @Endpoint
+@ComponentScan
 public class ClientEndpoint {
 	private static final String NAMESPACE_URI = "http//www.form.com/org/Client";
 	@Autowired
