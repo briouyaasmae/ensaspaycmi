@@ -12,11 +12,27 @@ public class Client {
 	public String nom;
     @Field(value = "prenom")
 	public String prenom;
-    @Indexed(unique = true)
     @Field(value = "phone")
 	public String phone;
     @Field(value = "solde")
 	public double solde;
+    @Field(value = "banqueName")
+    public String banqueName;
+	public Client(String identifiant, String nom, String prenom, String phone, double solde, String banqueName) {
+		super();
+		this.identifiant = identifiant;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.phone = phone;
+		this.solde = solde;
+		this.banqueName = banqueName;
+	}
+	public String getBanqueName() {
+		return banqueName;
+	}
+	public void setBanqueName(String banqueName) {
+		this.banqueName = banqueName;
+	}
 	public String getIdentifiant() {
 		return identifiant;
 	}
@@ -47,14 +63,7 @@ public class Client {
 	public void setSolde(double solde) {
 		this.solde = solde;
 	}
-	public Client(String identifiant, String nom, String prenom, String phone, double solde) {
-		super();
-		this.identifiant = identifiant;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.phone = phone;
-		this.solde = solde;
-	}
+
 	public Client() {
 		super();
 		// TODO Auto-generated constructor stub

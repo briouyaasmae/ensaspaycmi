@@ -30,20 +30,22 @@ public class EnsapaycmiApplicationTests {
     @Test
       public void getClientByPhoneTest() throws Exception {
         Source requestPayload = new StringSource(
-        		"<getClientRequest xmlns=\"http//www.form.com/org/Client\">"
-        	       +"<phone>1112225</phone>"
-        	        +"</getClientRequest>");
+        		"        <getClientRequest xmlns=\"http//www.form.com/org/Client\">\n"
+        		+ "            <phone>52147441174</phone>\n"
+        		+ "            <banqueName>CIH</banqueName>\n"
+        		+ "        </getClientRequest>");
         
         Source responsePayload = new StringSource(
-        " <ns2:getClientResponse xmlns:ns2=\"http//www.form.com/org/Client\">"
-        +"<ns2:client>"
-        +" <ns2:identifiant>0522535</ns2:identifiant>"
-        +" <ns2:nom>briouya</ns2:nom>"
-        +" <ns2:prenom>asmae</ns2:prenom>"
-         +" <ns2:phone>1112225</ns2:phone>"
-         +" <ns2:solde>78500.0</ns2:solde>"
-          +" </ns2:client>"
-       +" </ns2:getClientResponse>");
+        "  <ns2:getClientResponse xmlns:ns2=\"http//www.form.com/org/Client\">\n"
+        + "            <ns2:client>\n"
+        + "                <ns2:identifiant>123</ns2:identifiant>\n"
+        + "                <ns2:nom>br</ns2:nom>\n"
+        + "                <ns2:prenom>as</ns2:prenom>\n"
+        + "                <ns2:phone>52147441174</ns2:phone>\n"
+        + "                <ns2:solde>10800.0</ns2:solde>\n"
+        + "                <ns2:banqueName>CIH</ns2:banqueName>\n"
+        + "            </ns2:client>\n"
+        + "        </ns2:getClientResponse>");
  
         mockClient.sendRequest(withPayload(requestPayload))
                 .andExpect(noFault())
@@ -55,11 +57,12 @@ public class EnsapaycmiApplicationTests {
       Source requestPayload = new StringSource(
       		"<addClientRequest xmlns=\"http//www.form.com/org/Client\">\n"
       		+ "            <client>\n"
-      		+ "                <identifiant>5654</identifiant>\n"
-      		+ "                <nom>ELHADI</nom>\n"
-      		+ "                <prenom>Mouad</prenom>\n"
-      		+ "                <phone>25889</phone>\n"
+      		+ "                <identifiant>sssdd</identifiant>\n"
+      		+ "                <nom>lxdkcndfn</nom>\n"
+      		+ "                <prenom>test</prenom>\n"
+      		+ "                <phone>125458</phone>\n"
       		+ "                <solde>2552.10</solde>\n"
+            + "            <banqueName>CIH</banqueName>\n"
       		+ "            </client>\n"
       		+ "        </addClientRequest>");
       
@@ -78,11 +81,12 @@ public class EnsapaycmiApplicationTests {
       Source requestPayload = new StringSource(
       		"<addClientRequest xmlns=\"http//www.form.com/org/Client\">\n"
       		+ "            <client>\n"
-      		+ "                <identifiant>111258</identifiant>\n"
-      		+ "                <nom>Briouya</nom>\n"
-      		+ "                <prenom>Hasnae</prenom>\n"
-      		+ "                <phone>025898</phone>\n"
+      		+ "                <identifiant>23563</identifiant>\n"
+      		+ "                <nom>briouya</nom>\n"
+      		+ "                <prenom>asmae</prenom>\n"
+      		+ "                <phone>11154</phone>\n"
       		+ "                <solde>900.0</solde>\n"
+      		+ "                <solde>CMI</solde>\n"
       		+ "            </client>\n"
       		+ "        </addClientRequest>");
       
@@ -100,13 +104,14 @@ public class EnsapaycmiApplicationTests {
     @Test
     public void checkSoldeByPhoneTest() throws Exception {
       Source requestPayload = new StringSource(
-      		"<checkSoldeRequest xmlns=\"http//www.form.com/org/Client\">"
-      	       +"<phone>1112225</phone>"
-      	        +"</checkSoldeRequest>");
+      		"<checkSoldeRequest xmlns=\"http//www.form.com/org/Client\">\n"
+      		+ "            <phone>52147441174</phone>\n"
+      		+ "            <banqueName>CIH</banqueName>\n"
+      		+ "        </checkSoldeRequest>");
       
       Source responsePayload = new StringSource(
-      "         <ns2:checkSoldeResponse xmlns:ns2=\"http//www.form.com/org/Client\">\n"
-      + "            <ns2:solde>78500.0</ns2:solde>\n"
+      "      <ns2:checkSoldeResponse xmlns:ns2=\"http//www.form.com/org/Client\">\n"
+      + "            <ns2:solde>10800.0</ns2:solde>\n"
       + "        </ns2:checkSoldeResponse>");
 
       mockClient.sendRequest(withPayload(requestPayload))
@@ -117,11 +122,12 @@ public class EnsapaycmiApplicationTests {
     @Test
     public void payFactureDone() throws Exception {
       Source requestPayload = new StringSource(
-      		"        <payFactureRequest xmlns=\"http//www.form.com/org/Client\">\n"
-      		+ "            <montant>100</montant>\n"
-      		+ "            <phone>11122</phone>\n"
-      		+ "            <phone2>01588995</phone2>\n"
-      		+ "        </payFactureRequest>");
+    		  "   <payFactureRequest xmlns=\"http//www.form.com/org/Client\">\n"
+    		      		+ "            <montant>10</montant>\n"
+    		      		+ "            <phone>11154</phone>\n"
+    		      		+ "            <phone2>11154</phone2>\n"
+    		      		+ "            <banqueName>CIH</banqueName>\n"
+    		      		+ "        </payFactureRequest>");
       
       Source responsePayload = new StringSource(
       "        <ns2:payFactureResponse xmlns:ns2=\"http//www.form.com/org/Client\">\n"
@@ -138,11 +144,12 @@ public class EnsapaycmiApplicationTests {
     @Test
     public void payFactureIsNotDone() throws Exception {
       Source requestPayload = new StringSource(
-      		"        <payFactureRequest xmlns=\"http//www.form.com/org/Client\">\n"
-      		+ "            <montant>1000000</montant>\n"
-      		+ "            <phone>11122</phone>\n"
-      		+ "            <phone2>01588995</phone2>\n"
-      		+ "   </payFactureRequest>");
+      		"   <payFactureRequest xmlns=\"http//www.form.com/org/Client\">\n"
+      		+ "            <montant>100000000000</montant>\n"
+      		+ "            <phone>11154</phone>\n"
+      		+ "            <phone2>11154</phone2>\n"
+      		+ "            <banqueName>CIH</banqueName>\n"
+      		+ "        </payFactureRequest>");
       
       Source responsePayload = new StringSource(
       "        <ns2:payFactureResponse xmlns:ns2=\"http//www.form.com/org/Client\">\n"

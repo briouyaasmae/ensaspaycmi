@@ -33,7 +33,7 @@ public class ClientEndpoint {
 	public GetClientResponse getClient(@RequestPayload GetClientRequest request) {
 		GetClientResponse response = new GetClientResponse();
 		http.www_form_com.org.client.Client clientInfo = new http.www_form_com.org.client.Client();
-		BeanUtils.copyProperties(clientService.getClientByPhone(request.getPhone()), clientInfo);
+		BeanUtils.copyProperties(clientService.getClientByPhoneAndBanqueName(request.getPhone(),request.getBanqueName()), clientInfo);
 		response.setClient(clientInfo);
 		return response;
 	}
@@ -48,7 +48,8 @@ public class ClientEndpoint {
 	    client.setNom(request.getClient().getNom());
 	    client.setPrenom(request.getClient().getPrenom());
 	    client.setPhone(request.getClient().getPhone());
-	    client.setSolde(request.getClient().getSolde());
+	    client.setSolde(request.getClient().getSolde());	   
+	    client.setBanqueName(request.getClient().getBanqueName());
 		boolean flag = clientService.addClient(client);
 		if (flag == false) {
 			response.setMessage("Content Already Available");
@@ -64,7 +65,7 @@ public class ClientEndpoint {
 	@ResponsePayload
 	public CheckSoldeResponse checkSolde(@RequestPayload CheckSoldeRequest request) {
 		CheckSoldeResponse response =new CheckSoldeResponse();
-		double solde=clientService.checkSolde(request.getPhone());
+		double solde=clientService.checkSolde(request.getPhone(),request.getBanqueName());
 		response.setSolde(solde);
 		return response;
 	}
@@ -74,7 +75,7 @@ public class ClientEndpoint {
 	public PayFactureResponse payFacture(@RequestPayload PayFactureRequest request) {
 		PayFactureResponse response=new PayFactureResponse();
 		ServiceStatus status=new ServiceStatus();
-		boolean flag = clientService.payFacture(request.getPhone(),request.getPhone2(),request.getMontant());
+		boolean flag = clientService.payFacture(request.getPhone(),request.getPhone2(),request.getMontant(),request.getBanqueName());
 		if (flag == false) {
 			status.setMessage("your solde is low");
 			response.setServiceStatus(status);

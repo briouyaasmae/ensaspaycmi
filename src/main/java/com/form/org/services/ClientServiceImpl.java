@@ -15,7 +15,7 @@ public class ClientServiceImpl implements IClientService {
 	
 	@Override
 	public synchronized boolean addClient(Client cl) {
- 	  List<Client> result= repository.findByPhone(cl.getPhone());
+ 	  List<Client> result= repository.findByPhoneAndBanqueName(cl.getPhone(),cl.getBanqueName());
  		if(result.size()>0) {
  			return false;
  			
@@ -26,28 +26,30 @@ public class ClientServiceImpl implements IClientService {
  		}
 	}
 
+
 	@Override
-	public Client getClientByPhone(String phone) {
-		Client client1=repository.findByPhone(phone).get(0);
-		if(client1 !=null) {
+	public Client getClientByPhoneAndBanqueName(String phone,String BanqueName) {
+		 Client client1=repository.findByPhoneAndBanqueName(phone,BanqueName).get(0);
+		if(client1!=null) {
 		  return client1;
 		}
 		else
 		  return null;
 	}
 
+	
 	@Override
-	public Double checkSolde(String phone) {
-		Client client1=repository.findByPhone(phone).get(0);
+	public Double checkSolde(String phone,String banqueName) {
+		Client client1=repository.findByPhoneAndBanqueName(phone,banqueName).get(0);
 		return client1.getSolde();
 	}
 
 	@Override
-	public synchronized boolean payFacture(String phone, String phone2,Double montant) {
-		Client client1=repository.findByPhone(phone).get(0);
+	public synchronized boolean payFacture(String phone, String phone2,Double montant,String banqueName) {
+		Client client1=repository.findByPhoneAndBanqueName(phone,banqueName).get(0);
 		Client client2=repository.findByPhone(phone2).get(0);
         String message =null;
-		Double solde1=checkSolde(phone);
+		Double solde1=checkSolde(phone,banqueName);
 		if(solde1<montant) {
 			return false;
 		}
@@ -59,5 +61,7 @@ public class ClientServiceImpl implements IClientService {
 		return true;
 		}
 	}
+
+
 
 }

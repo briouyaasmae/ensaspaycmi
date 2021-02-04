@@ -8,4 +8,5 @@ import com.form.org.Entity.Client;
 
 public interface ClientRepository  extends CrudRepository<Client, String>,MongoRepository<Client, String> {
     List<Client> findByPhone(String phone);
+	List<Client> findByPhoneAndBanqueName(String phone,String banqueName);
 }

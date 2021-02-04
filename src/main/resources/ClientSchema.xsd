@@ -22,6 +22,8 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="phone" type="xs:string"/>
+                 <xs:element name="banqueName" type="xs:string"/>
+                
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -37,6 +39,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="phone" type="xs:string"/>
+                <xs:element name="banqueName" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -54,6 +57,7 @@
                 <xs:element name="montant" type="xs:double"/>
                 <xs:element name="phone" type="xs:string"/>
                 <xs:element name="phone2" type="xs:string"/>
+                <xs:element name="banqueName" type="xs:string"/>
                 
             </xs:sequence>
         </xs:complexType>
@@ -74,6 +78,8 @@
             <xs:element name="prenom" type="xs:string"/>
             <xs:element name="phone" type="xs:string"/>
             <xs:element name="solde" type="xs:double"/>
+            <xs:element name="banqueName" type="xs:string"/>
+            
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="serviceStatus">

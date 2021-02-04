@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2021.01.31 à 01:48:01 PM WET 
+// Généré le : 2021.02.04 à 01:12:28 AM WET 
 //
 
 
@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="montant" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="phone" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="phone2" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="banqueName" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -40,7 +41,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "", propOrder = {
     "montant",
     "phone",
-    "phone2"
+    "phone2",
+    "banqueName"
 })
 @XmlRootElement(name = "payFactureRequest")
 public class PayFactureRequest {
@@ -50,6 +52,8 @@ public class PayFactureRequest {
     protected String phone;
     @XmlElement(required = true)
     protected String phone2;
+    @XmlElement(required = true)
+    protected String banqueName;
 
     /**
      * Obtient la valeur de la propriété montant.
@@ -113,6 +117,30 @@ public class PayFactureRequest {
      */
     public void setPhone2(String value) {
         this.phone2 = value;
+    }
+
+    /**
+     * Obtient la valeur de la propriété banqueName.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getBanqueName() {
+        return banqueName;
+    }
+
+    /**
+     * Définit la valeur de la propriété banqueName.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setBanqueName(String value) {
+        this.banqueName = value;
     }
 
 }
